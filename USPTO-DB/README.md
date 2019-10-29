@@ -4,7 +4,7 @@ Configuração da imagem Docker do banco de dado MySQL para aplicação USPTO-AP
 
 ## Instalação
 
-Se posicionar no diretório que o Dockerfile e executar o seguinte comando para gerar a imagem do banco.
+Se posicionar no diretório do Dockerfile e executar o seguinte comando para gerar a imagem do banco.
 
 ```bash
 docker build -t uspto-db .
