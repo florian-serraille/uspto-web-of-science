@@ -1,0 +1,158 @@
+<h4>Consultar patentes</h4>
+
+<section class="row">
+    <div class="col">
+        <form action="">
+            <!-- Players -->
+            <div class="form-group row">
+                <div class="form-group col-sm-2">
+                    <label for="personsOperator" class="col-form-label">Operador</label>
+                    <select class="form-control" name="personsOperator" id="personsOperator">
+                        <option value="AND">E</option>
+                        <option value="OR">OU</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label for="personsType" class="col-form-label">Tipo de pessoa</label>
+                    <select class="form-control" name="personsType" id="personsType">
+                        <option value="APPLICANT" selected>Aplicante</option>
+                        <option value="ASSIGNEE">Detentor</option>
+                        <option value="INVENTOR">Inventor</option>
+                        <option selected value="ALL">Todos</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="persons" class="col-form-label">&nbsp;</label>
+                        <input id="persons" type="text" class="form-control" data-role="tagsinput"
+                               placeholder="Pessoas">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classification -->
+            <div class="form-group row">
+                <div class="form-group col-sm-2">
+                    <label for="classificationOperator" class="col-form-label">Operador</label>
+                    <select class="form-control" id="classificationOperator" name="classificationOperator">
+                        <option value="AND">E</option>
+                        <option value="OR">OU</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label for="classificationType" class="col-form-label">Tipo de classificação</label>
+                    <select class="form-control" id="classificationType" name="classificationType">
+                        <option value="CPC">CPC</option>
+                        <option value="ICPR">ICPR</option>
+                        <option selected value="ALL">Todos</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="classifications" class="col-form-label">&nbsp;</label>
+                        <input id="classifications" type="text" class="form-control" data-role="tagsinput"
+                               placeholder="Classificações">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <!-- Exemplo de botão danger dividido -->
+                <div class="form-group col-sm-2">
+                    <label for="expressionOperator" class="col-form-label">Operador</label>
+                    <select class="form-control" id="expressionOperator" name="expressionOperator">
+                        <option value="AND">E</option>
+                        <option value="OR">OU</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-2">
+                    <label for="expressionOperator" class="col-form-label">Tipo de expressão</label>
+                    <select class="form-control" id="expressionType" name="expressionType">
+                        <option value="ABSTRACT">Abstrato</option>
+                        <option value="CLAIMS">Claims</option>
+                        <option selected value="ALL">Todos</option>
+                    </select>
+                </div>
+                <!-- Exemplo de botão danger dividido -->
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="expressions" class="col-form-label">&nbsp;</label>
+                        <input id="expressions" type="text" class="form-control" data-role="tagsinput"
+                               placeholder="Expressão">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="initialDate" class="col-form-label">Período inicial</label>
+                        <input type="text" class="form-control datepicker" id="initialDate">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="finaleDate" class="col-form-label">Período final</label>
+                        <input type="text" class="form-control datepicker" id="finaleDate">
+                    </div>
+                </div>
+                <div class="col-sm-2 float-right">
+                    <label for="searchPatents" class="col-form-label text-center">&nbsp;</label>
+                    <button type="button" id="searchPatents" class="btn btn-block azul-escuro consultarPatentes">Consultar</button>
+                </div>
+
+                <div class="col-sm-2 float-right">
+                    <label for="exportPatents" class="col-form-label text-center">&nbsp;</label>
+                    <button type="button" id="exportPatents" disabled="disabled" class="btn btn-block azul-escuro" data-toggle="modal"
+                          data-target=".bd-example-modal-lg">
+                        Exportar Patentes
+                    </button>
+                </div>
+                <div class="col-sm-2 float-right">
+                    <label for="cleanForm" class="col-form-label text-center">&nbsp;</label>
+                    <button type="button" id="cleanForm" class="btn btn-block azul-escuro">
+                        Limpar formulário
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-9">
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="countSearch" class="col-form-label">Resultado da pesquisa</label>
+                        <input type="text" disabled class="form-control" value="0" id="countSearch">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<hr>
+
+<section id="lista-patentes" class="row float-right">
+    <div class="float-left">
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    var persons = new AmsifySuggestags($("#persons"));
+    var classifications = new AmsifySuggestags($("#classifications"));
+    var expressions = new AmsifySuggestags($("#expressions"));
+
+    persons._init();
+    classifications._init();
+    expressions._init();
+
+    Script.initDatePicker();
+</script>

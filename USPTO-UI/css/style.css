@@ -1,0 +1,37 @@
+.azul-escuro {
+  background-color: #244395;
+  color: white;
+}
+
+.azul-claro {
+  background-color: #1b94d2;
+  color: white;
+}
+
+.logo {
+  border: 1px solid #ccc;
+}
+
+.square-border {
+  border-radius: 0px;
+}
+
+.jumbotron-padding {
+  padding: .6em;
+}
+
+.label{
+  border-radius: 5px;
+  padding: 2px;
+  padding-left: 10px;
+  margin-top: 15px!important;
+  text-align: center;
+}
+
+.progress {
+  color: black;
+}
+
+#modalExportFiles a:hover {
+  color: white;
+}

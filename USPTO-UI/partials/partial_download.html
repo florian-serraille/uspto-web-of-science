@@ -1,0 +1,54 @@
+<section class="row">
+    <div class="col">
+      <form action="">
+        <h4>Baixar arquivos</h4>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="dataInicial" class="col-form-label">Data inicial</label>
+              <input type="text" class="form-control datepicker" id="dataInicial" placeholder=" dd/mm/yyyy">
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="dataFinal" class="col-form-label">Data final</label>
+              <input type="text" class="form-control datepicker" id="dataFinal" placeholder="dd/mm/yyyy">
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="downloadFiles" class="col-form-label text-center">&nbsp;</label>
+            <button type="button" id="downloadFiles" class="btn btn-block azul-escuro downloadFiles">Baixar</button>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="processFiles" class="col-form-label text-center">&nbsp;</label>
+            <button type="button" id="processFiles" class="btn btn-block azul-escuro processFiles">Processar</button>
+          </div>
+
+        </div>
+
+    </form>
+    </div>
+  </section>
+
+  <!-- Spinner que indica que o arquivo está sendo baixado  -->
+  <div id="current-download"></div>
+
+  <!-- Informacoes sobre o processamento atual-->
+  <div id="current-process-info"></div>
+
+  <!-- Monta o progresso visual do processamento atual-->
+  <div id="current-process"></div>
+
+  <hr>
+
+  <section id="section-files">
+
+  </section>
+  <script type="text/javascript">
+    PatentDownload.init();
+    PatentProcessor.init();
+    Script.initDatePicker();
+  </script>

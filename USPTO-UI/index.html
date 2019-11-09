@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>USPTO - Processamento de dados</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lib/fontawesome/font-awesome.min.css">
+    <link rel="stylesheet" href="css/lib/toastr/toastr.min.css">
+    <link rel="stylesheet" href="css/lib/suggestag/amsify.suggestags.css">
+    <link rel="stylesheet" href="css/lib/datapicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+</head>
+<body>
+
+<div class="jumbotron azul-escuro square-border jumbotron-padding">
+    <img class="img-fluid logo d-none d-sm-block" style="width:15em; position:absolute; left: 1em; top: 1em" src="img/ucb.png" alt="">
+    <h1 class="text-center">USPTO - Processamento de dados</h1>
+</div>
+
+<div class="container">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a id="search" class="nav-link active" data-toggle="pill" href="#pills-home"
+               role="tab"
+               aria-controls="pills-home" aria-selected="true">Consulta/ Exportaçao</a>
+        </li>
+        <li class="nav-item">
+            <a id="download" class="nav-link" data-toggle="pill" href="#pills-profile" role="tab"
+               aria-controls="pills-profile" aria-selected="false">Baixar/ Processar arquivos</a>
+        </li>
+
+    </ul>
+    <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+        <div id="search-body" class="tab-pane fade" role="tabpanel"
+             aria-labelledby="pills-home-tab"></div>
+        <div id="download-body" class="tab-pane fade" role="tabpanel"
+             aria-labelledby="pills-profile-tab"></div>
+    </div>
+</div>
+
+
+<!-- MODAL DE EXPORTAÇÃO DOS ARQUIVOS WEB OF SCIENCE -->
+<div class="modal fade bd-example-modal-lg" id="modalExportFiles" tabindex="-10000" role="dialog"
+     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myExtraLargeModalLabel">Exportar arquivo</h5>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="fileNameModal" class="col-sm-3 col-form-label">
+                            <strong>Nome do arquivo</strong>
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control pull-right" id="fileNameModal"
+                                   placeholder="Nome do arquivo">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="personTypeModal" class="col-md-3 col-form-label">
+                            <strong>Opções</strong>
+                        </label>
+                        <div class="col-md-3">
+                            <label for="personTypeModal" class=" col-form-label">Autor</label>
+                            <select class="custom-select " id="personTypeModal">
+                                <option value="APPLICANT" selected>Aplicante</option>
+                                <option value="ASSIGNEE">Detentor</option>
+                                <option value="INVENTOR">Inventor</option>
+                                <option value="ALL">Todos</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="contentModal" class=" col-form-label">Conteúdo</label>
+                            <select class="custom-select " id="contentModal">
+                                <option value="CLAIMS" selected>Creditos</option>
+                                <option value="ABSTRACT">Abstrato</option>
+                                <option value="TODOS">Todos</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="referenceModal" class=" col-form-label">Referências</label>
+                            <select class="custom-select " id="referenceModal">
+                                <option value="USPTO" selected>USPTO</option>
+                                <option value="FOREIGN">Estrageiro</option>
+                                <option value="OTHERS">Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div id="progress-export" class="d-none">
+                    <br>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn azul-claro" data-dismiss="modal">Cancelar</button>
+                <button id="exportFile" type="button" class="btn azul-escuro">Exportar</button>
+                <a id="downloadFile" target="_blank" href=""  type="button" class="btn azul-escuro d-none">Baixar arquivo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Libs JavaScript-->
+<script src="js/lib/jquery/jquery-3.4.1.min.js"></script>
+<script src="js/lib/propper/popper.min.js"></script>
+<script src="js/lib/bootstrap/bootstrap.min.js"></script>
+<script src="js/lib/blockui/jquery.blockUI.js"></script>
+<script src="js/lib/toastr/toastr.min.js"></script>
+<script src="js/lib/suggestags/jquery.amsify.suggestags.js"></script>
+<script src="js/lib/datapicker/bootstrap-datepicker.min.js"></script>
+<script src="js/lib/datapicker/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+<script src="js/lib/moment/moment.js"></script>
+<script src="js/lib/moment/locales/moment-with-locales.js"></script>
+
+<!--JavaScript Custom-->
+<script src="js/Script.js"></script>
+<script src="js/Messages.js"></script>
+<script src="js/PatentHome.js"></script>
+<script src="js/PatentSearch.js"></script>
+<script src="js/PatentExport.js"></script>
+<script src="js/PatentDownload.js"></script>
+<script src="js/PatentProcessor.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        PatentHome.listenerPartials();
+        PatentHome.iniciarConsulta();
+        PatentSearch.init();
+        PatentExport.init();
+    });
+</script>
+</body>
+</html>
