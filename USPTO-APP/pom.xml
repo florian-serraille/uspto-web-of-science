@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <springfox-swagger.version>2.8.0</springfox-swagger.version>
-        <docker.image.prefix>springio</docker.image.prefix>
+        <docker.image.prefix>uspto</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -112,6 +112,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.9</version>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
