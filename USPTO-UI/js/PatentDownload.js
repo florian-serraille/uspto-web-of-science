@@ -11,9 +11,6 @@ let PatentDownload = (function () {
                 let $initialDate = Script.getValue("dataInicial");
                 let $finalDate = Script.getValue("dataFinal");
 
-
-
-
                 disableButoes(true);
                 Script.validateDate(
                     $classTag + "#dataInicial",
@@ -212,6 +209,9 @@ let PatentDownload = (function () {
             downloadFiles();
             listFiles();
             monitorDownload();
+        },
+        listFiles: function () {
+            listFiles();
         }
     };
 })();

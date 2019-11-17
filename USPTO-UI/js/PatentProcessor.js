@@ -88,6 +88,7 @@ let PatentProcessor = (function () {
         $($classTag + "#downloadFiles").attr("disabled", false);
         $($classTag + "#processFiles").attr("disabled", false);
         $($classTag + "#processFiles").html("Processar");
+        PatentDownload.listFiles();
     };
 
     // Return the text of current step
