@@ -14,6 +14,8 @@ services:
       - uspto-network
     volumes:
       - /var/lib/mysql
+    security_opt:
+      - seccomp:unconfined
 
   app:
     container_name: app
