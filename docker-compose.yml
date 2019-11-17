@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: ./USPTO-DB/Dockerfile
+    restart: always
+    ports:
+      - 3036:3036
+    networks:
+      - uspto-network
+    volumes:
+      - /var/lib/mysql
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./USPTO-APP/Dockerfile
+    volumes:
+      - /uspto
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    command: ["./uspto/wait-for-mysql.sh"]
+    networks:
+      - uspto-network
+
+  ui:
+    container_name: ui
+    build:
+      context: .
+      dockerfile: ./USPTO-UI/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - uspto-network
+
+networks:
+  uspto-network:
+    driver: bridge

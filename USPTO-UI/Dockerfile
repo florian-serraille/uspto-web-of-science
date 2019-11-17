@@ -1,2 +1,2 @@
 FROM nginx:alpine
-COPY . /usr/share/nginx/html
+COPY ./USPTO-UI/ /usr/share/nginx/html
