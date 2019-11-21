@@ -13,7 +13,7 @@ services:
     networks:
       - uspto-network
     volumes:
-      - ${HOME}/usto/db:/var/lib/mysql
+      - ${HOME}/uspto/db:/var/lib/mysql
     security_opt:
       - seccomp:unconfined
 
