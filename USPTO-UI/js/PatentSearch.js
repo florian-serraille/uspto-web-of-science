@@ -119,17 +119,7 @@ let PatentSearch = (function () {
     // Clean the form
     let clearForm = function () {
         $($classTag).on("click", "#cleanForm", function () {
-            persons.destroy();
-            classifications.destroy();
-            expressions.destroy();
-
-            $("#classification").val("");
-            $("#claim").val("");
-            $("#dataInicial").val("");
-            $("#dataFinal").val("");
-            $("#persons").val("");
-            $("#classifications").val("");
-            $("#expressions").val("");
+            PatentHome.iniciarConsulta();
         });
     };
 
