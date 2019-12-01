@@ -6,14 +6,14 @@ services:
     container_name: db
     build:
       context: .
-      dockerfile: ./USPTO-DB/Dockerfile
+      dockerfile: ${USPTO}/USPTO-WEB-OF-SCIENCE/USPTO-DB/Dockerfile
     restart: always
     ports:
       - 3036:3036
     networks:
       - uspto-network
     volumes:
-      - ${HOME}/uspto/db:/var/lib/mysql
+      - ${USPTO}/db:/var/lib/mysql
     security_opt:
       - seccomp:unconfined
 
@@ -21,7 +21,7 @@ services:
     container_name: app
     build:
       context: .
-      dockerfile: ./USPTO-APP/Dockerfile
+      dockerfile: ${USPTO}/USPTO-WEB-OF-SCIENCE/USPTO-APP/Dockerfile
     volumes:
       - /uspto
     ports:
@@ -36,7 +36,7 @@ services:
     container_name: ui
     build:
       context: .
-      dockerfile: ./USPTO-UI/Dockerfile
+      dockerfile: ${USPTO}/USPTO-WEB-OF-SCIENCE/USPTO-UI/Dockerfile
     ports:
       - 80:80
     depends_on:
